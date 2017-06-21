@@ -15,14 +15,18 @@ class redditClient(object):
     reddit = praw.Reddit('defbotboot')
     subreddit = reddit.subreddit("dogpictures")
 
-    def get_submissions(self):
-        for submission in self.subreddit.hot(limit=5):
-            print(submission.title)
+    def get_submissions(self, limit = 10):
+        comments = []
+        for submission in self.subreddit.hot(limit = limit):
+            parsed_comment = {}
+            parsed_comment['text'] = submission.title
+            comments.append(parsed_comment)
+        return comments
     
 def main():
 
     reddit = redditClient()
-    reddit.get_submissions()
+    reddit.get_submissions(limit = 5)
 
 if __name__ == "__main__":
     # call the main function
