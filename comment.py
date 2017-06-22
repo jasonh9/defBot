@@ -12,7 +12,7 @@ class redditComment(object):
     generic reddit class for sentiment analysis
     '''
     reddit = praw.Reddit('defbotboot')
-    subreddit = reddit.subreddit("travel")
+    subreddit = reddit.subreddit("rsab")
 
     def clean_comment(self, comment):
 
@@ -30,10 +30,10 @@ class redditComment(object):
         comments = []
 
         try:
-            for submission in self.subreddit.hot(limit = limit):
+            for submission in self.subreddit.comments(limit = limit):
                 parsed_comment = {}
-                parsed_comment['text'] = submission.title
-                parsed_comment['sentiment'] = self.get_comment_sentiment(submission.title)
+                parsed_comment['text'] = submission.body
+                parsed_comment['sentiment'] = self.get_comment_sentiment(submission.body)
                 comments.append(parsed_comment)
             return comments
         except:

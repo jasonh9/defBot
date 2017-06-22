@@ -39,7 +39,6 @@ class redditReply(object):
 
 def main():
     reddit = redditReply()
-    
     reply = reddit.reply_comment(limit = 25)
 
 
