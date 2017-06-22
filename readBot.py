@@ -56,7 +56,7 @@ class redditClient(object):
 def main():
 
     reddit = redditClient()
-    comments = reddit.get_submissions(limit = 30)
+    comments = reddit.get_submissions(limit = 50)
 
     '''
     debugging only, dump array of comments
