@@ -27,13 +27,14 @@ class redditReply(object):
         
         for submission in self.subreddit.comments(limit = limit):
             if submission.id not in reply_post:
+
+                print("submission id: ", submission.id, " // reply_post match: ", reply_post)
                 if re.search("!defbot rate comments", submission.body, re.IGNORECASE):
                     # reply to the post
                     # submission.reply("Insert Sentiment Analysis here")
-                    print(submission.id)
                     print("Bot replying to : ", submission.body)
-        
                     reply_post.append(submission.id)
+
         with open("reply_post.txt", "w") as f:
             for post_id in reply_post:
                 f.write(post_id + "\n")
